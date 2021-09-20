@@ -4,6 +4,8 @@ import Slider from "./components/Slider";
 import Main from "./components/Main";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
+import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Main />
       <Services />
       <Gallery />
+      <ContactUs />
+      <Footer />
     </>
   );
 }

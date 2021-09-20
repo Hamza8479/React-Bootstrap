@@ -2,32 +2,13 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const Gallery = () => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const MyVerticallyCenteredModal = () => {
-    <Modal
-      //   {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => setModalShow(false)}>Close</Button>
-      </Modal.Footer>
-    </Modal>;
-  };
+  const [modalShow, setModalShow] = useState(false);
+
+  const handleShow = () => setModalShow(true);
+  const handleClose = () => setModalShow(false);
+  // const MyVerticallyCenteredModal = () => {
+
+  // };
   return (
     <div>
       <div className="container">
@@ -113,14 +94,51 @@ const Gallery = () => {
           <div>
             <h3 className="display-4 ">Want To Join</h3>
             <p>Be a part of us.</p>
-            <button
-              className="btn btn-warning"
-              onClick={() => setModalShow(true)}
-            >
+            <button className="btn btn-warning" onClick={handleShow}>
               Join Now
             </button>
           </div>
-          {MyVerticallyCenteredModal()}
+          <Modal show={modalShow} onHide={handleClose} animation={false}>
+            <Modal.Header closeButton>
+              <Modal.Title>SignUp</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <form action="">
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="form-control"
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group form-check ">
+                  <label className="form-check-label">
+                    <input type="checkbox" className="form-check-input" />{" "}
+                    Remember me
+                  </label>
+                </div>
+                <button className="btn btn-primary">Submit</button>
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </article>
       </section>
     </div>
